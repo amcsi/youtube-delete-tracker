@@ -29,7 +29,6 @@ class PlaylistScanner
                 $snippet = $result->getSnippet();
                 Video::updateOrCreate([
                     'external_video_id' => $snippet->getResourceId()->videoId,
-                    'external_channel_id' => $snippet->channelId,
                     'title' => $snippet->title,
                 ]);
             }

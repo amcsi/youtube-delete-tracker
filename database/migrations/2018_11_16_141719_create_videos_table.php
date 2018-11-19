@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateVideosTable extends Migration
 {
@@ -11,7 +11,7 @@ class CreateVideosTable extends Migration
         Schema::create('videos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('external_video_id')->unique();
-            $table->string('external_channel_id');
+            $table->string('external_channel_id')->nullable();
             $table->string('title');
             $table->timestamp('known_deleted_at')->nullable();
             $table->timestamp('updated_at')->useCurrent()->onUpdate('CURRENT_TIMESTAMP');
