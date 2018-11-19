@@ -14,8 +14,8 @@ class CreateVideosTable extends Migration
             $table->string('external_channel_id')->nullable();
             $table->string('title');
             $table->timestamp('known_deleted_at')->nullable();
-            $table->timestamp('updated_at')->useCurrent()->onUpdate('CURRENT_TIMESTAMP');
-            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
+            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
         });
     }
 
