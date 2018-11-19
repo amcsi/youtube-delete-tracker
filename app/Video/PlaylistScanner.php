@@ -23,7 +23,7 @@ class PlaylistScanner
     public function scan(string $playlistId): void
     {
         Video::unguarded(function () use ($playlistId) {
-            $results = $this->videosByPlaylistLister->list($playlistId);
+            $results = $this->videosByPlaylistLister->listAll($playlistId);
 
             foreach ($results as $result) {
                 $snippet = $result->getSnippet();
