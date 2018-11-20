@@ -14,10 +14,11 @@
         "symfony/stopwatch": "^4.1"
     },
     "require-dev": {
-        "barryvdh/laravel-ide-helper": "~2.4",
+        "barryvdh/laravel-ide-helper": "dev-fixed",
         "beyondcode/laravel-dump-server": "^1.0",
         "filp/whoops": "^2.0",
         "fzaninotto/faker": "^1.4",
+        "laracasts/generators": "^1.1",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^2.0",
         "phpunit/phpunit": "^7.0"
@@ -28,6 +29,7 @@
             "database/factories"
         ],
         "psr-4": {
+            "database\\": "database/",
             "App\\": "app/"
         }
     },
@@ -54,6 +56,12 @@
             "@php artisan package:discover --ansi"
         ]
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/iPaat/laravel-ide-helper"
+        }
+    ],
     "config": {
         "preferred-install": "dist",
         "sort-packages": true,

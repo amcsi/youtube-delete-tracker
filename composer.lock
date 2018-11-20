@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9b52064c899202dd06e3a45dc616521f",
+    "content-hash": "7f3d0093ee545c1192b5978e57bd5ff2",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -3203,16 +3203,16 @@
     "packages-dev": [
         {
             "name": "barryvdh/laravel-ide-helper",
-            "version": "v2.5.2",
+            "version": "dev-fixed",
             "source": {
                 "type": "git",
-                "url": "https://github.com/barryvdh/laravel-ide-helper.git",
-                "reference": "981ff45b43e0cf808af0a5a5f40f6369e0e29499"
+                "url": "https://github.com/iPaat/laravel-ide-helper.git",
+                "reference": "af675adfb9bb04da9a9b6d989fbbb365d17f5af4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-ide-helper/zipball/981ff45b43e0cf808af0a5a5f40f6369e0e29499",
-                "reference": "981ff45b43e0cf808af0a5a5f40f6369e0e29499",
+                "url": "https://api.github.com/repos/iPaat/laravel-ide-helper/zipball/af675adfb9bb04da9a9b6d989fbbb365d17f5af4",
+                "reference": "af675adfb9bb04da9a9b6d989fbbb365d17f5af4",
                 "shasum": ""
             },
             "require": {
@@ -3251,7 +3251,22 @@
                     "Barryvdh\\LaravelIdeHelper\\": "src"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Barryvdh\\LaravelIdeHelper\\": "tests"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "phpunit"
+                ],
+                "check-style": [
+                    "phpcs -p --standard=PSR2 src/"
+                ],
+                "fix-style": [
+                    "phpcbf -p --standard=PSR2 src/"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -3273,7 +3288,10 @@
                 "phpstorm",
                 "sublime"
             ],
-            "time": "2018-10-06T09:35:51+00:00"
+            "support": {
+                "source": "https://github.com/iPaat/laravel-ide-helper/tree/fixed"
+            },
+            "time": "2018-09-05T13:29:32+00:00"
         },
         {
             "name": "barryvdh/reflection-docblock",
@@ -3966,6 +3984,57 @@
                 "schema"
             ],
             "time": "2018-02-14T22:26:30+00:00"
+        },
+        {
+            "name": "laracasts/generators",
+            "version": "1.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laracasts/Laravel-5-Generators-Extended.git",
+                "reference": "bf6aa824698516cb6e22f63f275e8f73bd25f56b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laracasts/Laravel-5-Generators-Extended/zipball/bf6aa824698516cb6e22f63f275e8f73bd25f56b",
+                "reference": "bf6aa824698516cb6e22f63f275e8f73bd25f56b",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "~2.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laracasts\\Generators\\GeneratorsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laracasts\\Generators\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeffrey Way",
+                    "email": "jeffrey@laracasts.com"
+                }
+            ],
+            "description": "Extend Laravel 5's generators.",
+            "keywords": [
+                "generators",
+                "laravel"
+            ],
+            "time": "2017-11-14T20:43:22+00:00"
         },
         {
             "name": "mockery/mockery",
@@ -5595,11 +5664,13 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "barryvdh/laravel-ide-helper": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.1.3"
+        "php": "^7.2"
     },
     "platform-dev": []
 }
