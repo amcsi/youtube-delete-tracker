@@ -18,12 +18,27 @@ class PlaylistsByChannelLister
     }
 
     /**
-     * @return \Google_Service_YouTube_Playlist[]|\Google_Service_YouTube_PlaylistListResponse
+     * @return \Google_Service_YouTube_Playlist[]|\Generator
      */
     public function listAll(
-        string $channelId,
-        array $additionalParams = []
-    ): \Google_Service_YouTube_PlaylistListResponse {
+        string $channelId
+    ): \Generator {
+        $channel = $this->list($channelId);
+        do {
+            yield from $channel;
+        } while (($nextPageToken = $channel->getNextPageToken()) && $channel = $this->list(
+            $channelId,
+            ['pageToken' => $nextPageToken]
+        ));
+    }
+
+    /**
+     * Lists a page of playlists from the given channel.
+     *
+     * @return \Google_Service_YouTube_Playlist[]|\Google_Service_YouTube_PlaylistListResponse
+     */
+    public function list(string $channelId, array $additionalParams = []): \Google_Service_YouTube_PlaylistListResponse
+    {
         return $this->youtube->playlists->listPlaylists(
             'snippet',
             array_replace(['channelId' => $channelId, 'maxResults' => self::MAX_RESULTS], $additionalParams)
