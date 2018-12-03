@@ -6,7 +6,7 @@ namespace App\ThirdParty\Youtube\Action;
 /**
  * Lists playlists by a user.
  */
-class PlaylistsByUserLister
+class PlaylistsByChannelLister
 {
     private const MAX_RESULTS = 50;
 
@@ -17,11 +17,14 @@ class PlaylistsByUserLister
         $this->youtube = $youtube;
     }
 
+    /**
+     * @return \Google_Service_YouTube_Playlist[]|\Google_Service_YouTube_PlaylistListResponse
+     */
     public function listAll(
         string $channelId,
         array $additionalParams = []
-    ): \Google_Service_YouTube_PlaylistItemListResponse {
-        return $this->youtube->playlistItems->listPlaylistItems(
+    ): \Google_Service_YouTube_PlaylistListResponse {
+        return $this->youtube->playlists->listPlaylists(
             'snippet',
             array_replace(['channelId' => $channelId, 'maxResults' => self::MAX_RESULTS], $additionalParams)
         );

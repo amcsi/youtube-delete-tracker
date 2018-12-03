@@ -9,7 +9,7 @@ use Symfony\Component\Stopwatch\Stopwatch;
 
 class ScanPlaylistCommand extends Command
 {
-    private const COMMAND = 'scan-playlist';
+    public const COMMAND = 'scan-playlist';
 
     protected $signature = self::COMMAND . ' {playlistId}';
     protected $description = 'Scans a playlist, adds videos from them, and reports ones that are deleted.';

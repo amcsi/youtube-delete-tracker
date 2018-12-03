@@ -7,6 +7,7 @@ use App\Playlist;
 use App\ThirdParty\Youtube\Action\PlaylistViewer;
 use App\ThirdParty\Youtube\Action\VideosByPlaylistLister;
 use App\Video;
+use Psr\Log\LoggerInterface;
 
 /**
  * Scans a playlist for videos.
@@ -17,16 +18,24 @@ class PlaylistScanner
 {
     private $videosByPlaylistLister;
     private $playlistViewer;
+    private $logger;
 
-    public function __construct(VideosByPlaylistLister $videosByPlaylistLister, PlaylistViewer $playlistViewer)
+    public function __construct(
+        VideosByPlaylistLister $videosByPlaylistLister,
+        PlaylistViewer $playlistViewer,
+        LoggerInterface $logger
+    )
     {
         $this->videosByPlaylistLister = $videosByPlaylistLister;
         $this->playlistViewer = $playlistViewer;
+        $this->logger = $logger;
     }
 
     public function scan(string $youtubePlaylistId): void
     {
         $youtubePlaylist = $this->playlistViewer->view($youtubePlaylistId);
+        $title = $youtubePlaylist->snippet->title;
+        $this->logger->info("Scanning playlist $youtubePlaylistId ($title)");
         /** @var Playlist $playlist */
         $playlist = Playlist::unguarded(
             function () use ($youtubePlaylistId, $youtubePlaylist) {
