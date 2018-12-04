@@ -12,7 +12,7 @@ class CreateVideosTable extends Migration
         Schema::create('videos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('external_video_id')->unique();
-            $table->string('external_channel_id')->nullable();
+            $table->string('external_channel_id')->default('');
             $table->string('title');
             $table->timestamp('known_deleted_at')->nullable();
             Tools::timestamps($table);

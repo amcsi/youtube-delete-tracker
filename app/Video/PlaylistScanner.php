@@ -44,6 +44,8 @@ class PlaylistScanner
                 return Playlist::updateOrCreate(
                     [
                         'external_playlist_id' => $youtubePlaylistId,
+                    ],
+                    [
                         'external_channel_id' => $playlistSnippet->channelId,
                         'title' => $playlistSnippet->title,
                     ]
@@ -61,8 +63,11 @@ class PlaylistScanner
                     $video = Video::updateOrCreate(
                         [
                             'external_video_id' => $snippet->getResourceId()->videoId,
+                        ],
+                        [
                             'title' => $snippet->title,
-                        ]);
+                        ]
+                    );
                     $videoIds[] = $video->id;
                 }
                 return $videoIds;

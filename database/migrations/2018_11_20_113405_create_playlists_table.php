@@ -14,7 +14,7 @@ class CreatePlaylistsTable extends Migration
             function (Blueprint $table) {
                 $table->increments('id');
                 $table->string('external_playlist_id')->unique();
-                $table->string('external_channel_id');
+                $table->string('external_channel_id')->default('');
                 $table->string('title');
                 Tools::timestamps($table);
             }
