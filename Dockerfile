@@ -12,9 +12,6 @@ RUN apt-get update && apt-get install -y \
   # For composer
   zlib1g-dev
 
-# This includes the docker-php-pecl-install executable
-COPY bin/docker-php-pecl-install /usr/local/bin/
-
 # PHP extensions
 RUN docker-php-ext-install \
   zip
