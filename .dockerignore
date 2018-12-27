@@ -25,3 +25,5 @@ data/generated_images
 
 # For swoole
 *.pid
+
+Jenkinsfile.groovy
