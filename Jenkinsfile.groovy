@@ -5,5 +5,6 @@ node {
 
     customImage.inside {
         sh 'pwd'
+        sh 'ls -al'
     }
 }
