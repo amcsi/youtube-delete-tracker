@@ -1,17 +1,9 @@
-pipeline {
-    agent {
-        dockerfile true
-    }
+node {
+    checkout scm
 
-    stages {
-        stage('Run tests') {
-            steps {
-                sh 'ls -al'
-                sh 'pwd'
-                sh 'ls -al /'
-                sh 'ls -al vendor/bin'
-                sh 'vendor/bin/phpunit'
-            }
-        }
+    def customImage = docker.build("my-image:${env.BUILD_ID}")
+
+    customImage.inside {
+        sh 'pwd'
     }
 }
