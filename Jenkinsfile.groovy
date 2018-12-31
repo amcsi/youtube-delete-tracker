@@ -6,8 +6,7 @@ pipeline {
     stages {
         stage('Run tests') {
             steps {
-                sh 'cd /var/www && ls -al'
-                sh 'vendor/bin/phpunit'
+                sh 'cd /var/www && vendor/bin/phpunit'
             }
         }
     }
