@@ -1,7 +1,7 @@
 pipeline {
     agent {
         dockerfile {
-            dir '/var/www'
+            customWorkspace '/var/www'
         }
     }
 
