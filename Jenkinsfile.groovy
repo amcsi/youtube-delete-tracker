@@ -1,16 +1,14 @@
 pipeline {
     agent {
-        dockerfile true
+        dockerfile {
+            dir '/var/www'
+        }
     }
 
     stages {
         stage('Run tests') {
             steps {
-                dir('/var/www') {
-                    sh 'pwd'
-                    sh 'pwd'
-                    sh 'vendor/bin/phpunit'
-                }
+                sh 'vendor/bin/phpunit'
             }
         }
     }
