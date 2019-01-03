@@ -29,5 +29,9 @@
         <env name="MAIL_DRIVER" value="array"/>
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>
+        <env name="DB_DATABASE" value="ydt_test" />
+        <env name="DB_USERNAME" value="ydt_test" />
+        <env name="DB_PASSWORD" value="" />
+        <env name="APP_KEY" value="base64:x9SdFpcr+PhVRFF03oab0x5be5dHzj04HRP4w34M5Po=" />
     </php>
 </phpunit>
