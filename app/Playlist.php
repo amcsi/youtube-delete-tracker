@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
@@ -25,11 +26,17 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Playlist whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Playlist whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Playlist whereUpdatedAt($value)
+ * @property-read \App\Channel $channel
  */
 class Playlist extends Model
 {
     public function videos(): BelongsToMany
     {
         return $this->belongsToMany(Video::class);
+    }
+
+    public function channel(): BelongsTo
+    {
+        return $this->belongsTo(Channel::class);
     }
 }
