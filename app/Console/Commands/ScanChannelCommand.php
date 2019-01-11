@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\Channel\ChannelAdderAndScanner;
 use App\Debug\Profiling;
-use App\ThirdParty\Youtube\Action\PlaylistsByChannelLister;
 use Illuminate\Console\Command;
 use Symfony\Component\Stopwatch\Stopwatch;
 
@@ -14,12 +14,12 @@ class ScanChannelCommand extends Command
     protected $signature = self::COMMAND . ' {channelId}';
     protected $description = 'Scans all playlists of a channel.';
 
-    private $playlistsByChannelLister;
+    private $channelAdderAndScanner;
 
-    public function __construct(PlaylistsByChannelLister $playlistsByChannelLister)
+    public function __construct(ChannelAdderAndScanner $channelAdderAndScanner)
     {
         parent::__construct();
-        $this->playlistsByChannelLister = $playlistsByChannelLister;
+        $this->channelAdderAndScanner = $channelAdderAndScanner;
     }
 
     public function handle()
@@ -27,9 +27,7 @@ class ScanChannelCommand extends Command
         $stopwatchEvent = (new Stopwatch())->start('scan-channel');
         $this->output->text('Started scanning channel.');
 
-        foreach ($this->playlistsByChannelLister->listAll($this->argument('channelId')) as $playlist) {
-            $this->call(ScanPlaylistCommand::COMMAND, ['playlistId' => $playlist->id]);
-        }
+        $this->channelAdderAndScanner->addAndScan($this->argument('channelId'));
 
         $this->output->text('Done scanning channel. ' . Profiling::stopwatchToHuman($stopwatchEvent));
     }

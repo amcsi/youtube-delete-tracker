@@ -9,26 +9,21 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 /**
  * App\Playlist
  *
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Playlist newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Playlist newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Playlist query()
- * @mixin \Eloquent
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Video[] $videos
  * @property int $id
  * @property string $external_playlist_id
- * @property string $external_channel_id
+ * @property int $channel_id
  * @property string $title
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon $created_at
+ * @property-read \App\Channel $channel
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Video[] $videos
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Playlist whereChannelId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Playlist whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Playlist whereExternalChannelId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Playlist whereExternalPlaylistId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Playlist whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Playlist whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Playlist whereUpdatedAt($value)
- * @property-read \App\Channel $channel
- * @property int $channel_id
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Playlist whereChannelId($value)
+ * @mixin \Eloquent
  */
 class Playlist extends Model
 {

@@ -14,18 +14,18 @@ class AddChannelTrackField extends Migration
     {
         Schema::table('channels',
             function (Blueprint $table) {
-                $table->boolean('should_track')->default(false)->after('name');
+                $table->boolean('track')->default(false)->after('name');
             });
 
         // Mark all the current ones as ones to be tracked.
-        Channel::query()->update(['should_track' => true]);
+        Channel::query()->update(['track' => true]);
     }
 
     public function down()
     {
         Schema::table('channels',
             function (Blueprint $table) {
-                $table->dropColumn('should_track');
+                $table->dropColumn('track');
             });
     }
 }
