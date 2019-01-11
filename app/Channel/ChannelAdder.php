@@ -21,13 +21,12 @@ class ChannelAdder
     public function addChannel(string $youtubeChannelId, bool $track): Channel
     {
         $youtubeChannel = $this->channelViewer->view($youtubeChannelId);
-        $data = [
-            'external_channel_id' => $youtubeChannel->id,
+        $values = [
             'name' => $youtubeChannel->getSnippet()->title,
         ];
         if ($track) {
-            $data['track'] = true;
+            $values['track'] = true;
         }
-        return Channel::updateOrCreate($data);
+        return Channel::updateOrCreate(['external_channel_id' => $youtubeChannel->id], $values);
     }
 }
