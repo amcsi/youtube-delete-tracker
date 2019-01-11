@@ -18,7 +18,7 @@ class ChannelAdderAndScannerTest extends TestCase
 
         $channelId = 'channelId';
 
-        $channelAdder->expects()->addChannel($channelId);
+        $channelAdder->expects()->addChannel($channelId, true);
         $channelScanner->expects()->scan($channelId);
 
         $instance->addAndScan('channelId');
