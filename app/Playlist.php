@@ -27,6 +27,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Playlist whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Playlist whereUpdatedAt($value)
  * @property-read \App\Channel $channel
+ * @property int $channel_id
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Playlist whereChannelId($value)
  */
 class Playlist extends Model
 {
