@@ -14,10 +14,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property int $track
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon $created_at
+ * @property string|null $last_scanned_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Playlist[] $playlists
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Channel whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Channel whereExternalChannelId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Channel whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Channel whereLastScannedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Channel whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Channel whereTrack($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Channel whereUpdatedAt($value)
