@@ -46,6 +46,14 @@ pipeline {
         always {
             // Clean up the tag.
             sh "docker rmi ${dockerImageTag}"
+
+            // Send email notification.
+            emailext (
+                body: '$DEFAULT_CONTENT',
+                to: '$DEFAULT_RECIPIENTS',
+                recipientProviders: [brokenTestsSuspects(), brokenBuildSuspects(), developers()],
+                subject: '$DEFAULT_SUBJECT'
+            )
         }
     }
 }
