@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property \Illuminate\Support\Carbon $created_at
  * @property-read \App\Channel $channel
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Video[] $videos
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Video[] $videosNotRemotelyDeleted
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Playlist whereChannelId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Playlist whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Playlist whereExternalPlaylistId($value)
@@ -30,6 +31,11 @@ class Playlist extends Model
     public function videos(): BelongsToMany
     {
         return $this->belongsToMany(Video::class);
+    }
+
+    public function videosNotRemotelyDeleted(): BelongsToMany
+    {
+        return $this->belongsToMany(Video::class)->whereNull('known_deleted_at');
     }
 
     public function channel(): BelongsTo

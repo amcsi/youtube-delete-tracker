@@ -10,22 +10,32 @@ use App\Video;
 class PlaylistVideosScanner
 {
     private $videosByPlaylistLister;
+    private $missingChecker;
 
-    public function __construct(VideosByPlaylistLister $videosByPlaylistLister)
-    {
+    public function __construct(
+        VideosByPlaylistLister $videosByPlaylistLister,
+        PlaylistMissingVideoChecker $missingChecker
+    ) {
         $this->videosByPlaylistLister = $videosByPlaylistLister;
+        $this->missingChecker = $missingChecker;
     }
 
     public function scan(Playlist $playlist): void
     {
         $videoIds = Video::unguarded(
             function () use ($playlist) {
+                $existingVideosKeyByExternalId = $playlist->videosNotRemotelyDeleted->keyBy('external_video_id');
+
                 $results = $this->videosByPlaylistLister->listAll($playlist->external_playlist_id);
 
                 $videoIds = [];
                 foreach ($results as $result) {
                     $videoIds[] = VideoUpserter::upsertFromPlaylistItem($result);
+                    unset($existingVideosKeyByExternalId[$result->getSnippet()->getResourceId()->videoId]);
                 }
+
+                $this->missingChecker->investigateMissing($playlist, $existingVideosKeyByExternalId);
+
                 return $videoIds;
             });
 
