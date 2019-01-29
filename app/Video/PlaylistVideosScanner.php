@@ -30,7 +30,11 @@ class PlaylistVideosScanner
 
                 $videoIds = [];
                 foreach ($results as $result) {
-                    $videoIds[] = VideoUpserter::upsertFromPlaylistItem($result);
+                    $videoId = VideoUpserter::upsertFromPlaylistItem($result);
+                    if ($videoId === null) {
+                        continue;
+                    }
+                    $videoIds[] = $videoId;
                     unset($existingVideosKeyByExternalId[$result->getSnippet()->getResourceId()->videoId]);
                 }
 
