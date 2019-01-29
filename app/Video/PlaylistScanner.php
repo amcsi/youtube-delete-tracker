@@ -6,8 +6,6 @@ namespace App\Video;
 use App\Channel\ChannelAdder;
 use App\Playlist;
 use App\ThirdParty\Youtube\Action\PlaylistViewer;
-use App\ThirdParty\Youtube\Action\VideosByPlaylistLister;
-use App\Video;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -17,25 +15,26 @@ use Psr\Log\LoggerInterface;
  */
 class PlaylistScanner
 {
-    private $videosByPlaylistLister;
     private $playlistViewer;
     private $channelAdder;
+    private $playlistVideosScanner;
     private $logger;
 
     public function __construct(
-        VideosByPlaylistLister $videosByPlaylistLister,
         PlaylistViewer $playlistViewer,
         ChannelAdder $channelAdder,
+        PlaylistVideosScanner $playlistVideosScanner,
         LoggerInterface $logger
     ) {
-        $this->videosByPlaylistLister = $videosByPlaylistLister;
         $this->playlistViewer = $playlistViewer;
         $this->channelAdder = $channelAdder;
         $this->logger = $logger;
+        $this->playlistVideosScanner = $playlistVideosScanner;
     }
 
     public function scan(string $youtubePlaylistId): void
     {
+        // First we'll need to make sure we have an up-to-date Eloquent model representation of the playlist.
         $youtubePlaylist = $this->playlistViewer->view($youtubePlaylistId);
         $title = $youtubePlaylist->snippet->title;
         $this->logger->info("Scanning playlist $youtubePlaylistId ($title)");
@@ -59,18 +58,6 @@ class PlaylistScanner
             }
         );
 
-        $videoIds = Video::unguarded(
-            function () use ($youtubePlaylistId) {
-                $results = $this->videosByPlaylistLister->listAll($youtubePlaylistId);
-
-                $videoIds = [];
-                foreach ($results as $result) {
-                    $videoIds[] = VideoUpserter::upsertFromPlaylistItem($result);
-                }
-                return $videoIds;
-            });
-
-        // Many-to-many relationship.
-        $playlist->videos()->sync($videoIds, false);
+        $this->playlistVideosScanner->scan($playlist);
     }
 }
