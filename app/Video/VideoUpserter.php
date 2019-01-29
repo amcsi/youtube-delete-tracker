@@ -13,10 +13,10 @@ class VideoUpserter
         $video = Video::updateOrCreate(
             [
                 'external_video_id' => $snippet->getResourceId()->videoId,
-                'known_deleted_at' => null, // In case the video had previously been marked deleted upstream.
             ],
             [
                 'title' => $snippet->title,
+                'known_deleted_at' => null, // In case the video had previously been marked deleted upstream.
             ]
         );
         return $video->id;
