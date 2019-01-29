@@ -12,7 +12,7 @@ class VideoUpserter
     {
         $snippet = $youtubePlaylistItem->getSnippet();
         $videoId = $snippet->getResourceId()->videoId;
-        if ($snippet->title === 'Deleted video') {
+        if (!$snippet->getThumbnails()) {
             // This is unexpected; deleted videos normally just shouldn't show up. Log it, and do not upsert here.
             $message = sprintf('Video with a youtube ID of %s got a title of "Deleted video"', $videoId);
             Log::warning($message);
