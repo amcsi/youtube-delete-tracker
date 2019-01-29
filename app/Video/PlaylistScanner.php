@@ -65,16 +65,7 @@ class PlaylistScanner
 
                 $videoIds = [];
                 foreach ($results as $result) {
-                    $snippet = $result->getSnippet();
-                    $video = Video::updateOrCreate(
-                        [
-                            'external_video_id' => $snippet->getResourceId()->videoId,
-                        ],
-                        [
-                            'title' => $snippet->title,
-                        ]
-                    );
-                    $videoIds[] = $video->id;
+                    $videoIds[] = VideoUpserter::upsertFromPlaylistItem($result);
                 }
                 return $videoIds;
             });
