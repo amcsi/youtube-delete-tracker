@@ -30,6 +30,7 @@ class VideoUpserter
             if (!$video->known_deleted_at) {
                 // Only set the deletion date if it's not set already.
                 $video->known_deleted_at = Carbon::now();
+                $video->save();
             }
 
             return $video->id;
