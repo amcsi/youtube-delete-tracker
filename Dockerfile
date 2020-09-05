@@ -1,4 +1,4 @@
-FROM php:7.2
+FROM php:7.4
 MAINTAINER  Attila Szeremi <attila+webdev@szeremi.com>
 WORKDIR /var/www
 RUN cd /var/www
@@ -10,7 +10,8 @@ RUN apt-get update && apt-get install -y \
   gnupg \
 
   # For composer
-  zlib1g-dev
+  libzip-dev \
+  zip
 
 # PHP extensions
 RUN docker-php-ext-install \
