@@ -11,6 +11,7 @@
         "google/apiclient": "^2.0",
         "laravel/framework": "7.*",
         "laravel/tinker": "^2.0",
+        "sentry/sentry-laravel": "^1.8",
         "symfony/stopwatch": "^4.1",
         "ext-pdo": "*"
     },
