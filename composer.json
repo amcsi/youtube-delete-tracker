@@ -9,14 +9,14 @@
         "doctrine/dbal": "^2.5",
         "fideloper/proxy": "^4.0",
         "google/apiclient": "^2.0",
-        "laravel/framework": "5.7.*",
+        "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
         "symfony/stopwatch": "^4.1",
         "ext-pdo": "*"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",
-        "barryvdh/laravel-ide-helper": "dev-fixed",
+        "barryvdh/laravel-ide-helper": "^2.8",
         "beyondcode/laravel-dump-server": "^1.0",
         "filp/whoops": "^2.0",
         "fzaninotto/faker": "^1.4",
@@ -58,12 +58,6 @@
             "@php artisan package:discover --ansi"
         ]
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/iPaat/laravel-ide-helper"
-        }
-    ],
     "config": {
         "preferred-install": "dist",
         "sort-packages": true,
