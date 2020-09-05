@@ -9,7 +9,7 @@
         "doctrine/dbal": "^2.5",
         "fideloper/proxy": "^4.0",
         "google/apiclient": "^2.0",
-        "laravel/framework": "5.8.*",
+        "laravel/framework": "6.*",
         "laravel/tinker": "^1.0",
         "symfony/stopwatch": "^4.1",
         "ext-pdo": "*"
