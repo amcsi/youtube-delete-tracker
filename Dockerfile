@@ -1,7 +1,5 @@
-FROM php:7.4
+FROM php:7.4-apache
 MAINTAINER  Attila Szeremi <attila+webdev@szeremi.com>
-WORKDIR /var/www
-RUN cd /var/www
 
 RUN apt-get update && apt-get install -y \
   # For installing node
@@ -48,3 +46,13 @@ RUN [ \
 # https://github.com/wallabag/wallabag/issues/1845#issuecomment-205726683
 RUN chmod a+rw database/
 
+ENV APACHE_DOCUMENT_ROOT /var/www/html/public
+
+# Change Apache document root.
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+
+# mod_rewrite for URL rewrite and mod_headers for .htaccess extra headers like Access-Control-Allow-Origin
+RUN a2enmod rewrite headers
+
+CMD ["bin/start.sh"]

@@ -17,7 +17,7 @@ pipeline {
             steps {
                 script {
                     dockerImage.inside('--network szeremi -e DB_HOST=mysql -e APP_ENV=testing') {
-                        sh 'cd /var/www && php artisan migrate:fresh && vendor/bin/phpunit'
+                        sh 'cd /var/www/html && php artisan migrate:fresh && vendor/bin/phpunit'
                     }
                 }
             }
@@ -38,6 +38,9 @@ pipeline {
                     }
                     // Re-tag the image, because the deployment server is the same as the Jenkins server.
                     sh "docker tag ${dockerImage.id} ${tag}"
+                    // Stop the docker image running under the same tag.
+                    // Then, systemd should automatically run the container again, but with the updated image.
+                    sh "docker stop ${tag} || true"
                 }
             }
         }
