@@ -12,6 +12,8 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'public/css', [
-    require('postcss-import'),
-    require('tailwindcss'),
+  require('postcss-import'),
+  require('tailwindcss'),
 ]);
+
+mix.browserSync('ydt.localtest.me:80');

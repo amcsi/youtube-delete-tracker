@@ -14,9 +14,11 @@
         "laravel/jetstream": "^1.1",
         "laravel/legacy-factories": "^1.0",
         "laravel/sanctum": "^2.6",
+        "laravel/socialite": "^5.0",
         "laravel/tinker": "^2.0",
         "livewire/livewire": "^2.0",
         "sentry/sentry-laravel": "^1.8",
+        "socialiteproviders/youtube": "^3.0",
         "symfony/stopwatch": "^4.1"
     },
     "require-dev": {

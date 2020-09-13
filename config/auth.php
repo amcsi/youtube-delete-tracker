@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'youtube',
         'passwords' => 'users',
     ],
 
@@ -36,6 +36,11 @@ return [
     */
 
     'guards' => [
+        'youtube' => [
+            'driver' => 'session',
+            'provider' => 'youtube',
+        ],
+
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
@@ -70,10 +75,10 @@ return [
             'model' => \App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'youtube' => [
+            'driver' => 'eloquent',
+            'model' => \App\Models\YoutubeUser::class,
+        ],
     ],
 
     /*
