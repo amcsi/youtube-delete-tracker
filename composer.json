@@ -11,8 +11,11 @@
         "fideloper/proxy": "^4.0",
         "google/apiclient": "^2.0",
         "laravel/framework": "^8.0",
+        "laravel/jetstream": "^1.1",
         "laravel/legacy-factories": "^1.0",
+        "laravel/sanctum": "^2.6",
         "laravel/tinker": "^2.0",
+        "livewire/livewire": "^2.0",
         "sentry/sentry-laravel": "^1.8",
         "symfony/stopwatch": "^4.1"
     },
