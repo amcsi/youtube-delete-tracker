@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Channel;
-use App\Channel\ChannelAdderAndScanner;
+use App\Models\Channel;
+use App\Models\Channel\ChannelAdderAndScanner;
 use App\Debug\Profiling;
 use Illuminate\Console\Command;
 use Symfony\Component\Stopwatch\Stopwatch;

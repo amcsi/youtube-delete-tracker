@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Debug\Profiling;
-use App\Video\PlaylistScanner;
+use App\Models\Video\PlaylistScanner;
 use Illuminate\Console\Command;
 use Symfony\Component\Stopwatch\Stopwatch;
 

@@ -9,6 +9,6 @@ class RemoveDeletedVideoTitles extends Migration
 {
     public function up()
     {
-        \App\Video::where('title', 'Private video')->orWhere('title', 'Deleted video')->delete();
+        \App\Models\Video::where('title', 'Private video')->orWhere('title', 'Deleted video')->delete();
     }
 }

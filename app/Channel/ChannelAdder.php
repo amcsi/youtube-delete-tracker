@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Channel;
+namespace App\Models\Channel;
 
-use App\Channel;
+use App\Models\Channel;
 use App\ThirdParty\Youtube\Action\ChannelViewer;
 
 class ChannelAdder

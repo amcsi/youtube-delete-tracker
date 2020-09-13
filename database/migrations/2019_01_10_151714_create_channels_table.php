@@ -1,7 +1,7 @@
 <?php
 
-use App\Channel;
-use App\Playlist;
+use App\Models\Channel;
+use App\Models\Playlist;
 use database\migrations\tools\Tools;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;

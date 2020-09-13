@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Video;
+namespace App\Models\Video;
 
-use App\Channel\ChannelAdder;
-use App\Playlist;
+use App\Models\Channel\ChannelAdder;
+use App\Models\Playlist;
 use App\ThirdParty\Youtube\Action\PlaylistViewer;
 use Psr\Log\LoggerInterface;
 

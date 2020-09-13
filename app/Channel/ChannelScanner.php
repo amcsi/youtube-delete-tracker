@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Channel;
+namespace App\Models\Channel;
 
 use App\Console\Commands\ScanPlaylistCommand;
 use App\Console\Kernel;
