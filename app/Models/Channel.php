@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon $created_at
  * @property string|null $last_scanned_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Playlist[] $playlists
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Playlist[] $playlists
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Channel whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Channel whereExternalChannelId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Channel whereId($value)

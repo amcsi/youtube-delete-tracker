@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Video;
 
 use App\Channel\ChannelAdder;
-use App\Playlist;
+use App\Models\Playlist;
 use App\ThirdParty\Youtube\Action\PlaylistViewer;
 use Psr\Log\LoggerInterface;
 

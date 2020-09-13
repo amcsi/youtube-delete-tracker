@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Video;
 
-use App\Video;
+use App\Models\Video;
 use Carbon\Carbon;
 
 class VideoUpserter

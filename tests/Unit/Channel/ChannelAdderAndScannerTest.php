@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Channel;
 
-use App\Channel;
 use App\Channel\ChannelAdder;
 use App\Channel\ChannelAdderAndScanner;
 use App\Channel\ChannelScanner;
+use App\Models\Channel;
 use Carbon\Carbon;
 use Mockery\Matcher\Type;
 use Tests\TestCase;

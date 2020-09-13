@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Video;
 
-use App\Playlist;
+use App\Models\Playlist;
+use App\Models\Video;
 use App\ThirdParty\Youtube\Action\VideosByPlaylistLister;
-use App\Video;
 
 class PlaylistVideosScanner
 {

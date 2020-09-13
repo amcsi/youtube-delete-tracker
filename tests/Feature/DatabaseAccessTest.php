@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
-use App\User;
+use App\Models\User;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Tests\TestCase;
 

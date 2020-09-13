@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property string|null $known_deleted_at
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon $created_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Playlist[] $playlists
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Playlist[] $playlists
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Video whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Video whereExternalVideoId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Video whereId($value)

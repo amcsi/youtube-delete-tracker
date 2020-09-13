@@ -1,11 +1,11 @@
 <?php
 
-use App\Channel;
-use App\Playlist;
+use App\Models\Channel;
+use App\Models\Playlist;
 use Database\Migrations\Tools\Tools;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateChannelsTable extends Migration
 {
@@ -14,17 +14,21 @@ class CreateChannelsTable extends Migration
         try {
             DB::beginTransaction();
 
-            Schema::create('channels',
+            Schema::create(
+                'channels',
                 function (Blueprint $table) {
                     $table->increments('id');
                     $table->string('external_channel_id')->unique();
                     $table->string('name');
                     Tools::timestamps($table);
-                });
+                }
+            );
 
-            Schema::table('playlists', function (Blueprint $table) {
-                $table->unsignedInteger('channel_id')->after('external_channel_id');
-                Schema::disableForeignKeyConstraints();
+            Schema::table(
+                'playlists',
+                function (Blueprint $table) {
+                    $table->unsignedInteger('channel_id')->after('external_channel_id');
+                    Schema::disableForeignKeyConstraints();
                 $table->foreign('channel_id')->references('id')->on('channels')->after('external_channel_id');
             });
 
