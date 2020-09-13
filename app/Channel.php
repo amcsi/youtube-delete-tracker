@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- * App\Channel
+ * App\Channel.
  *
  * @property int $id
  * @property string $external_channel_id

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace database\migrations\tools;
@@ -13,4 +14,3 @@ class Tools
         $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
     }
 }
-

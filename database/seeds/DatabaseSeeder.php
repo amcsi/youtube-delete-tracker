@@ -14,8 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         $faker = \Faker\Factory::create();
 
-        foreach(range(1, 50) as $index)
-        {
+        foreach (range(1, 50) as $index) {
             $createdAt = $faker->dateTimeThisYear;
             Video::create([
                 'external_video_id' => $faker->password,

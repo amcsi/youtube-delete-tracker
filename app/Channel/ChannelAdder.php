@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Channel;
@@ -27,6 +28,7 @@ class ChannelAdder
         if ($track) {
             $values['track'] = true;
         }
+
         return Channel::updateOrCreate(['external_channel_id' => $youtubeChannel->id], $values);
     }
 }

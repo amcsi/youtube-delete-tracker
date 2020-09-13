@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Video;
@@ -26,7 +27,7 @@ class PlaylistMissingVideoChecker
      */
     public function investigateMissing(Playlist $playlist, Collection $videos): void
     {
-        if (!($videosCount = count($videos))) {
+        if (! ($videosCount = count($videos))) {
             return;
         }
 

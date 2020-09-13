@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\ThirdParty\Youtube\Action;
@@ -20,9 +21,10 @@ class PlaylistViewer
             'snippet',
             ['id' => $playlistId, 'maxResults' => 1]
         )->current();
-        if (!$playlist) {
+        if (! $playlist) {
             throw new NotFoundHttpException("Could not find playlist with an ID of $playlistId");
         }
+
         return $playlist;
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
- * App\Playlist
+ * App\Playlist.
  *
  * @property int $id
  * @property string $external_playlist_id

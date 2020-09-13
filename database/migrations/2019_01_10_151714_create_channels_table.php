@@ -3,9 +3,9 @@
 use App\Channel;
 use App\Playlist;
 use database\migrations\tools\Tools;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateChannelsTable extends Migration
 {

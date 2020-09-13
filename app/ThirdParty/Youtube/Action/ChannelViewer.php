@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\ThirdParty\Youtube\Action;
@@ -20,9 +21,10 @@ class ChannelViewer
             'snippet',
             ['id' => $channelId, 'maxResults' => 1]
         )->current();
-        if (!$channel) {
+        if (! $channel) {
             throw new NotFoundHttpException("Could not find channel with an ID of $channelId");
         }
+
         return $channel;
     }
 }

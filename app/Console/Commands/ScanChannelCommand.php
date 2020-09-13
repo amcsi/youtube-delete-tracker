@@ -12,7 +12,7 @@ class ScanChannelCommand extends Command
 {
     private const COMMAND = 'scan-channel';
 
-    protected $signature = self::COMMAND . ' {--all : Scan all tracked playlists} {channelId? : Scan the given youtube channel ID}';
+    protected $signature = self::COMMAND.' {--all : Scan all tracked playlists} {channelId? : Scan the given youtube channel ID}';
     protected $description = 'Scans all playlists of a channel.';
 
     private $channelAdderAndScanner;
@@ -40,9 +40,9 @@ class ScanChannelCommand extends Command
 
             $this->channelAdderAndScanner->addAndScan($youtubeChannelId);
 
-            $this->output->text('Done scanning channel. ' . Profiling::stopwatchToHuman($channelEvent));
+            $this->output->text('Done scanning channel. '.Profiling::stopwatchToHuman($channelEvent));
         }
 
-        $this->output->text('Done scanning channels. ' . Profiling::stopwatchToHuman($stopwatchEvent));
+        $this->output->text('Done scanning channels. '.Profiling::stopwatchToHuman($stopwatchEvent));
     }
 }

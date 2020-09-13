@@ -11,7 +11,7 @@ class ScanPlaylistCommand extends Command
 {
     public const COMMAND = 'scan-playlist';
 
-    protected $signature = self::COMMAND . ' {playlistId}';
+    protected $signature = self::COMMAND.' {playlistId}';
     protected $description = 'Scans a playlist, adds videos from them, and reports ones that are deleted.';
 
     private $playlistScanner;
@@ -29,6 +29,6 @@ class ScanPlaylistCommand extends Command
 
         $this->playlistScanner->scan($this->argument('playlistId'));
 
-        $this->output->text('Done scanning playlist. ' . Profiling::stopwatchToHuman($stopwatchEvent));
+        $this->output->text('Done scanning playlist. '.Profiling::stopwatchToHuman($stopwatchEvent));
     }
 }

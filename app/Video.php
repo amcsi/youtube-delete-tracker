@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
- * App\Video
+ * App\Video.
  *
  * @property int $id
  * @property string $external_video_id

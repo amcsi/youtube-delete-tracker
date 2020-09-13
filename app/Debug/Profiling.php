@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Debug;
@@ -10,7 +11,7 @@ use Symfony\Component\Stopwatch\StopwatchEvent;
  */
 class Profiling
 {
-    static function stopwatchToHuman(StopwatchEvent $event): string
+    public static function stopwatchToHuman(StopwatchEvent $event): string
     {
         return sprintf('%.4f seconds', $event->getDuration() / 1000);
     }

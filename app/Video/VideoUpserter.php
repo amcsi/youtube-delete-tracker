@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Video;
@@ -16,18 +17,18 @@ class VideoUpserter
             'known_deleted_at' => null, // In case the video had previously been marked deleted upstream.
         ];
         $externalVideoId = $snippet->getResourceId()->videoId;
-        if (!$snippet->getThumbnails()) {
+        if (! $snippet->getThumbnails()) {
             // The video is deleted or private.
 
             $video = Video::where(['external_video_id' => $externalVideoId])->first();
-            if (!$video) {
+            if (! $video) {
                 // We don't even have a video like that locally; just don't bother with this deleted video.
                 return null;
             }
 
             // Mark the video as deleted.
 
-            if (!$video->known_deleted_at) {
+            if (! $video->known_deleted_at) {
                 // Only set the deletion date if it's not set already.
                 $video->known_deleted_at = Carbon::now();
                 $video->save();
@@ -41,6 +42,7 @@ class VideoUpserter
             ],
             $values
         );
+
         return $video->id;
     }
 }
