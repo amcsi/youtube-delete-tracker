@@ -2,7 +2,7 @@
 
 use App\Channel;
 use App\Playlist;
-use database\migrations\tools\Tools;
+use Database\Migrations\Tools\Tools;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;

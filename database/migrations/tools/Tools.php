@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace database\migrations\tools;
+namespace Database\Migrations\Tools;
 
 use Illuminate\Database\Schema\Blueprint;
 
