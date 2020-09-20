@@ -16,4 +16,4 @@ mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'pub
   require('tailwindcss'),
 ]);
 
-mix.browserSync('ydt.localtest.me:80');
+mix.browserSync('ydt.localtest.me');

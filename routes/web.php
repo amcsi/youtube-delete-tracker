@@ -12,9 +12,14 @@
 */
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PlaylistController;
 use App\Http\Controllers\YoutubeLoginController;
 
-Route::get('/', [HomeController::class, 'index']);
+Route::middleware(['auth:youtube'])->group(
+    function () {
+        Route::get('/', [HomeController::class, 'index']);
+    }
+);
 
 Route::get(
     '/guest',
@@ -30,6 +35,14 @@ Route::get(
     '/privacy-policy',
     function () {
         return view('privacyPolicy');
+    }
+);
+
+Route::middleware(['auth:sanctum,youtube', 'verified'])->group(
+    function () {
+        Route::get('/', [HomeController::class, 'index']);
+        Route::get('/playlists/{playlist}', [PlaylistController::class, 'show'])->name('playlists.show');
+        Route::get('dashboard', fn() => view('dashboard'))->name('dashboard');
     }
 );
 
