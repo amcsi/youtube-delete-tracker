@@ -15,19 +15,25 @@ use App\Models\Playlist;
 <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
+        <x-jet-input wire:model.debounce.250ms="search" placeholder="Search" />
+
         {!! $playlists->links() !!}
 
         <div class="h-4"></div>
 
-        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+        @if (count($playlists))
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
 
-            @foreach($playlists as $playlist)
-                <a
-                    href="{{ route('playlists.show', ['playlist' => $playlist->id]) }}"
-                    class="block p-4 border-b-2 border-gray-200 border-solid"
-                >{{ $playlist->title }}</a>
-            @endforeach
-        </div>
+                @foreach($playlists as $playlist)
+                    <a
+                        href="{{ route('playlists.show', ['playlist' => $playlist->id]) }}"
+                        class="block p-4 border-b-2 border-gray-200 border-solid"
+                    >{{ $playlist->title }}</a>
+                @endforeach
+            </div>
+        @else
+            There were no results.
+        @endif
 
         <div class="h-4"></div>
 

@@ -10,6 +10,8 @@ use Livewire\Component;
 
 class Home extends Component
 {
+    public $search;
+
     public function render()
     {
         if (!($user = Auth::user())) {
@@ -22,7 +24,11 @@ class Home extends Component
             \Auth::logout();
             return redirect()->route('guest')->withErrors(["This user does not have delete tracking set up."]);
         }
-        $playlists = Playlist::whereChannelId($channelId)->paginate();
+        $playlists = Playlist::whereChannelId($channelId)->where(
+            'title',
+            'like',
+            sprintf('%%%s%%', addcslashes($this->search, '%_'))
+        )->paginate();
 
         return view('livewire.home', compact('playlists'));
     }
