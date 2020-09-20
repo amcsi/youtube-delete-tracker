@@ -2,10 +2,11 @@
 declare(strict_types=1);
 
 /**
- * @var Video[] $videos
+ * @var Video[]|LengthAwarePaginator $videos
  */
 
 use App\Models\Video;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 ?>
 
@@ -18,12 +19,21 @@ use App\Models\Video;
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
+            {!! $videos->links() !!}
+
+            <div class="h-4"></div>
+
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
 
                 @foreach($videos as $video)
                     <a href="" class="block p-4 border-b-2 border-gray-200 border-solid">{{ $video->title }}</a>
                 @endforeach
             </div>
+
+            <div class="h-4"></div>
+
+            {!! $videos->links() !!}
         </div>
     </div>
 </x-app-layout>
