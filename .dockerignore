@@ -22,6 +22,7 @@ storage/app/*
 storage/framework/*
 storage/logs/*
 data/generated_images
+.github
 
 # For swoole
 *.pid
