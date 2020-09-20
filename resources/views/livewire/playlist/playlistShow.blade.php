@@ -19,6 +19,8 @@ use Illuminate\Pagination\LengthAwarePaginator;
 <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
+        <x-jet-input wire:model.debounce.250ms="search" placeholder="Search" />
+
         {!! $videos->links() !!}
 
         <div class="h-4"></div>

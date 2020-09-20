@@ -7,10 +7,12 @@ use Livewire\Component;
 
 class PlaylistShow extends Component
 {
+    public $search;
+
     /**
      * @var Playlist|mixed
      */
-    private $playlist;
+    public $playlist;
 
     public function mount(Playlist $playlist): void
     {
@@ -19,7 +21,11 @@ class PlaylistShow extends Component
 
     public function render()
     {
-        $videos = $this->playlist->videos()->orderBy('known_deleted_at', 'desc')->paginate();
+        $videos = $this->playlist->videos()->where(
+            'title',
+            'like',
+            sprintf('%%%s%%', addcslashes($this->search, '%_'))
+        )->orderBy('known_deleted_at', 'desc')->paginate();
 
         return view('livewire.playlist.playlistShow', compact('videos'));
     }
