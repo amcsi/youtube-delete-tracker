@@ -19,7 +19,7 @@ class PlaylistShow extends Component
 
     public function render()
     {
-        $videos = $this->playlist->videos()->paginate();
+        $videos = $this->playlist->videos()->orderBy('known_deleted_at', 'desc')->paginate();
 
         return view('livewire.playlist.playlistShow', compact('videos'));
     }
