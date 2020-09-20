@@ -22,7 +22,7 @@ class Home extends Component
             \Auth::logout();
             return redirect()->route('guest')->withErrors(["This user does not have delete tracking set up."]);
         }
-        $playlists = Playlist::whereChannelId($channelId)->get();
+        $playlists = Playlist::whereChannelId($channelId)->paginate();
 
         return view('livewire.home', compact('playlists'));
     }

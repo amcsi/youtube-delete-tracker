@@ -14,6 +14,11 @@ use App\Models\Playlist;
 
 <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
+        {!! $playlists->links() !!}
+
+        <div class="h-4"></div>
+
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
 
             @foreach($playlists as $playlist)
@@ -23,5 +28,9 @@ use App\Models\Playlist;
                 >{{ $playlist->title }}</a>
             @endforeach
         </div>
+
+        <div class="h-4"></div>
+
+        {!! $playlists->links() !!}
     </div>
 </div>
