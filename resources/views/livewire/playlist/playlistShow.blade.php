@@ -3,8 +3,10 @@ declare(strict_types=1);
 
 /**
  * @var Video[]|LengthAwarePaginator $videos
+ * @var Playlist $playlist
  */
 
+use App\Models\Playlist;
 use App\Models\Video;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -61,6 +63,16 @@ use Illuminate\Pagination\LengthAwarePaginator;
                                             </td>
                                             <td class="px-6 py-4 whitespace-no-wrap">
                                                 <div class="text-sm leading-5 text-gray-900">{{$video->external_video_id}}
+                                                    @if(!$video->known_deleted_at)
+                                                        <a
+                                                            href="https://www.youtube.com/watch?v={{ rawurlencode($video->external_video_id) }}&amp;list={{rawurlencode($playlist->external_playlist_id)}}"
+                                                            target="_blank"
+                                                            rel="nofollow noopener"
+                                                            title="Open video in new tab"
+                                                        >
+                                                            🔗
+                                                        </a>
+                                                    @endif
                                                 </div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-no-wrap">
