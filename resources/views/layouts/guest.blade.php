@@ -18,6 +18,8 @@
 </head>
 <body class="h-full">
 <div class="font-sans text-gray-900 antialiased h-full">
+    <x-jet-validation-errors class="mb-4" />
+
     {{ $slot }}
 </div>
 </body>
