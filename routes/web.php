@@ -12,14 +12,9 @@
 */
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PlaylistController;
 use App\Http\Controllers\YoutubeLoginController;
-
-Route::middleware(['auth:youtube'])->group(
-    function () {
-        Route::get('/', [HomeController::class, 'index']);
-    }
-);
+use App\Http\Livewire\Home;
+use App\Http\Livewire\Playlist\PlaylistShow;
 
 Route::get(
     '/guest',
@@ -40,8 +35,8 @@ Route::get(
 
 Route::middleware(['auth:sanctum,youtube', 'verified'])->group(
     function () {
-        Route::get('/', [HomeController::class, 'index']);
-        Route::get('/playlists/{playlist}', [PlaylistController::class, 'show'])->name('playlists.show');
+        Route::get('/', Home::class);
+        Route::get('/playlists/{playlist}', PlaylistShow::class)->name('playlists.show');
         Route::get('dashboard', fn() => view('dashboard'))->name('dashboard');
     }
 );
