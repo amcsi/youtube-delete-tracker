@@ -59,7 +59,7 @@ class PlaylistMissingVideoChecker
                 $externalVideoIds = $videos->map->external_video_id->values()->toArray();
 
                 // List all the videos based on the missing external video ids missing from the playlist.
-                $foundYoutubeVideos = $this->videoLister->listAll(['id' => implode(',', $externalVideoIds)]);
+                $foundYoutubeVideos = $this->videoLister->listAll($externalVideoIds);
                 $foundExternalVideoIds = [];
                 foreach ($foundYoutubeVideos as $foundVideo) {
                     $foundExternalVideoIds[] = $foundVideo->id;

@@ -17,14 +17,14 @@ class VideoLister
     /**
      * @return \Google_Service_YouTube_Video[]
      */
-    public function listAll(array $params): \Generator
+    public function listAll(array $videoIds): \Generator
     {
-        $playlist = $this->list($params);
-        do {
-            yield from $playlist;
-        } while (($nextPageToken = $playlist->getNextPageToken()) && $playlist = $this->list(
-            array_replace($params, ['pageToken' => $nextPageToken]),
-        ));
+        // https://stackoverflow.com/a/36371390/1381550
+        $chunks = array_chunk($videoIds, config('custom.youtube.idListChunkSize'));
+
+        foreach ($chunks as $chunk) {
+            yield from $this->list(['id' => implode(',', $chunk)]);
+        }
     }
 
     /**
