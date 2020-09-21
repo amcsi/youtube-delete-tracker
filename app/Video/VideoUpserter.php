@@ -16,7 +16,7 @@ class VideoUpserter
             'known_deleted_at' => null, // In case the video had previously been marked deleted upstream.
         ];
         $externalVideoId = $snippet->getResourceId()->videoId;
-        if (!$snippet->getThumbnails()) {
+        if (!$snippet->getThumbnails() || in_array($snippet->title, ['Private video', 'Deleted video'], true)) {
             // The video is deleted or private.
 
             $video = Video::where(['external_video_id' => $externalVideoId])->first();
