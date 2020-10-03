@@ -11,10 +11,10 @@
 |
 */
 
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\YoutubeLoginController;
 use App\Http\Livewire\Home;
 use App\Http\Livewire\Playlist\PlaylistShow;
+use App\Http\Livewire\Video\VideoList;
 
 Route::get(
     '/guest',
@@ -35,8 +35,9 @@ Route::get(
 
 Route::middleware(['auth:sanctum,youtube', 'verified'])->group(
     function () {
-        Route::get('/', Home::class);
+        Route::get('/', Home::class)->name('home');
         Route::get('/playlists/{playlist}', PlaylistShow::class)->name('playlists.show');
+        Route::get('/deleted-videos', VideoList::class)->name('deletedVideos.list');
         Route::get('dashboard', fn() => view('dashboard'))->name('dashboard');
     }
 );
