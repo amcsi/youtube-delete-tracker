@@ -13,6 +13,8 @@ class VideoList extends Component
 {
     public $search;
 
+    protected $queryString = ['search'];
+
     public function render()
     {
         /** @var YoutubeUser $youtubeUser */

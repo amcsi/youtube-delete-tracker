@@ -10,6 +10,8 @@ class PlaylistShow extends Component
 {
     public $search;
 
+    protected $queryString = ['search'];
+
     /**
      * @var Playlist|mixed
      */
