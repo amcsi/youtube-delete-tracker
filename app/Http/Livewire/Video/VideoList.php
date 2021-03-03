@@ -29,7 +29,7 @@ class VideoList extends Component
             'title',
             'like',
             DatabaseUtils::escapeLike($this->search)
-        )->paginate();
+        )->orderBy('known_deleted_at', 'desc')->paginate();
 
         return view('livewire.video.video-list', compact('videos'));
     }
